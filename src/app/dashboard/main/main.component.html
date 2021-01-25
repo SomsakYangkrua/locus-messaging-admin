@@ -1,0 +1,170 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header mt-n3">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <!-- <h4 class="font-weight-bold">Hi, Welcome back!</h4> -->
+              <h4 class="font-weight-normal mb-0">Messaging Admin</h4>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Widgets -->
+    <!-- <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12">
+        <div class="card card-statistic-2">
+          <div class="clearfix">
+            <div class="card-icon shadow-primary float-left bg-purple">
+              <i class="fas fa-paste"></i>
+            </div>
+            <div class="float-right m-4">
+              <div>
+                <h5 class="pull-right">Total Booking</h5>
+              </div>
+              <div class="card-body pull-right">
+                1,245
+              </div>
+            </div>
+          </div>
+          <div class="card-content m-3">
+            <div class="progress skill-progress m-b-20 w-100">
+              <div class="progress-bar l-bg-purple width-per-45" role="progressbar" aria-valuenow="45" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-12">
+        <div class="card card-statistic-2">
+          <div class="clearfix">
+            <div class="card-icon shadow-primary float-left bg-orange">
+              <i class="fas fa-bed"></i>
+            </div>
+            <div class="float-right m-4">
+              <div>
+                <h5 class="pull-right">Rooms Available</h5>
+              </div>
+              <div class="card-body pull-right">
+                287
+              </div>
+            </div>
+          </div>
+          <div class="card-content m-3">
+            <div class="progress skill-progress m-b-20 w-100">
+              <div class="progress-bar l-bg-orange width-per-45" role="progressbar" aria-valuenow="45" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-12">
+        <div class="card card-statistic-2">
+          <div class="clearfix">
+            <div class="card-icon shadow-primary float-left bg-green">
+              <i class="fas fa-UserProfiles"></i>
+            </div>
+            <div class="float-right m-4">
+              <div>
+                <h5 class="pull-right">New Customers</h5>
+              </div>
+              <div class="card-body pull-right">
+                1,532
+              </div>
+            </div>
+          </div>
+          <div class="card-content m-3">
+            <div class="progress skill-progress m-b-20 w-100">
+              <div class="progress-bar l-bg-green width-per-45" role="progressbar" aria-valuenow="45" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-12">
+        <div class="card card-statistic-2">
+          <div class="clearfix">
+            <div class="card-icon shadow-primary float-left bg-cyan">
+              <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="float-right m-4">
+              <div>
+                <h5 class="pull-right">Total Revenue</h5>
+              </div>
+              <div class="card-body pull-right">
+                $22,567
+              </div>
+            </div>
+          </div>
+          <div class="card-content m-3">
+            <div class="progress skill-progress m-b-20 w-100">
+              <div class="progress-bar l-bg-cyan width-per-45" role="progressbar" aria-valuenow="45" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!-- #END# Widgets -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Hotel Survay</h2>
+            <button mat-button [matMenuTriggerFor]="menu" class="header-dropdown">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>Action</button>
+              <button mat-menu-item>Another action</button>
+              <button mat-menu-item>Something else here</button>
+            </mat-menu>
+          </div>
+          <div class="body">
+            <apx-chart [series]="areaChartOptions.series" [chart]="areaChartOptions.chart"
+              [xaxis]="areaChartOptions.xaxis" [yaxis]="areaChartOptions.yaxis" [colors]="areaChartOptions.colors"
+              [stroke]="areaChartOptions.stroke" [legend]="areaChartOptions.legend" [tooltip]="areaChartOptions.tooltip"
+              [dataLabels]="areaChartOptions.dataLabels"></apx-chart>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="card">
+          <div class="header">
+            <h2>Room Booking Chart</h2>
+            <button mat-button [matMenuTriggerFor]="menu" class="header-dropdown">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>Action</button>
+              <button mat-menu-item>Another action</button>
+              <button mat-menu-item>Something else here</button>
+            </mat-menu>
+          </div>
+          <div class="body">
+            <div echarts [options]="donut_chart" class="desktop-pie-height"></div>
+            <table class="table mb-0">
+              <tbody>
+                <tr>
+                  <td><i class="fas fa-circle text-primary"></i> Single</td>
+                  <td class="text-right">734</td>
+                </tr>
+                <tr>
+                  <td><i class="fas fa-circle text-warning"></i> Double</td>
+                  <td class="text-right">567</td>
+                </tr>
+                <tr>
+                  <td><i class="fas fa-circle text-danger"></i> King</td>
+                  <td class="text-right">464</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
