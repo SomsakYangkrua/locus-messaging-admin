@@ -55,9 +55,11 @@ export class AllUsersComponent implements OnInit {
   ngOnInit() {
     this.loadData();
   }
+
   refresh() {
     this.loadData();
   }
+
   addNew() {
     const dialogRef = this.dialog.open(FormDialogComponent, {
       data: {

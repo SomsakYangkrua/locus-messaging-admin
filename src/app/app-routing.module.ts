@@ -18,14 +18,9 @@ const routes: Routes = [
           import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
       },
       {
-        path: 'Users',
+        path: 'users',
         loadChildren: () =>
           import('./users/users.module').then((m) => m.UsersModule),
-      },
-      {
-        path: 'booking',
-        loadChildren: () =>
-          import('./booking/booking.module').then((m) => m.BookingModule),
       },
       {
         path: 'rooms',
