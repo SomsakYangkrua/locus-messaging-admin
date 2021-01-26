@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./edit-user.component.sass'],
 })
 export class EditUserComponent {
-  userForm: FormGroup;
+  userProfileForm: FormGroup;
   formdata = {
     id:0,
     username: 'admin',
@@ -20,16 +20,17 @@ export class EditUserComponent {
   };
 
   constructor(private fb: FormBuilder) {
-    this.userForm = this.createUserForm();
+    this.userProfileForm = this.createUserForm();
   }
 
   onSubmit() {
-    console.log('Form Value', this.userForm.value);
+    console.log('Form Value', this.userProfileForm.value);
   }
 
   createUserForm(): FormGroup {
     return this.fb.group({
       id: [this.formdata.id],
+      role: [this.formdata.role],
       username: [
         this.formdata.username,
         [Validators.required, Validators.pattern('[a-zA-Z]+')],
@@ -49,7 +50,6 @@ export class EditUserComponent {
         [Validators.required, Validators.email, Validators.minLength(5)],
       ],
       enable: [this.formdata.enable],
-      role: [this.formdata.role],
     });
   }
 }

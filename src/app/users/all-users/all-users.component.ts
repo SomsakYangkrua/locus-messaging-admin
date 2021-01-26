@@ -38,11 +38,11 @@ export class AllUserComponent implements OnInit {
   dataSource: ExampleDataSource | null;
   selection = new SelectionModel<UserProfile>(true, []);
   id: number;
-  user: UserProfile | null;
+  userProfile: UserProfile | null;
   constructor(
     public httpClient: HttpClient,
     public dialog: MatDialog,
-    public usersService: UserService,
+    public userService: UserService,
     private snackBar: MatSnackBar
   ) { }
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -63,7 +63,7 @@ export class AllUserComponent implements OnInit {
   addNew() {
     const dialogRef = this.dialog.open(FormDialogComponent, {
       data: {
-        user: this.user,
+        userProfile: this.userProfile,
         action: 'add',
       },
     });
@@ -72,7 +72,7 @@ export class AllUserComponent implements OnInit {
         // After dialog is closed we're doing frontend updates
         // For add we're just pushing a new row inside DataServicex
         this.exampleDatabase.dataChange.value.unshift(
-          this.usersService.getDialogData()
+          this.userService.getDialogData()
         );
         this.refreshTable();
         this.showNotification(
@@ -88,7 +88,7 @@ export class AllUserComponent implements OnInit {
     this.id = row.id;
     const dialogRef = this.dialog.open(FormDialogComponent, {
       data: {
-        user: row,
+        userProfile: row,
         action: 'edit',
       },
     });
@@ -101,7 +101,7 @@ export class AllUserComponent implements OnInit {
         // Then you update that record using data from dialogData (values you enetered)
         this.exampleDatabase.dataChange.value[
           foundIndex
-        ] = this.usersService.getDialogData();
+        ] = this.userService.getDialogData();
         // And lastly refresh table
         this.refreshTable();
         this.showNotification(
@@ -243,10 +243,10 @@ export class ExampleDataSource extends DataSource<UserProfile> {
         // Filter data
         this.filteredData = this._exampleDatabase.data
           .slice()
-          .filter((user: UserProfile) => {
+          .filter((userProfile: UserProfile) => {
             const searchStr = (
-              user.username +
-              user.email
+              userProfile.username +
+              userProfile.email
             ).toLowerCase();
             return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
           });
