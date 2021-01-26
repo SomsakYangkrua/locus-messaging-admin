@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { UsersService } from './users.service';
+import { UserService } from './users.service';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -19,7 +19,7 @@ import { SelectionModel } from '@angular/cdk/collections';
   templateUrl: './all-users.component.html',
   styleUrls: ['./all-users.component.sass']
 })
-export class AllUsersComponent implements OnInit {
+export class AllUserComponent implements OnInit {
   displayedColumns = [
     'select',
     'id',
@@ -34,7 +34,7 @@ export class AllUsersComponent implements OnInit {
     'actions',
   ];
 
-  exampleDatabase: UsersService | null;
+  exampleDatabase: UserService | null;
   dataSource: ExampleDataSource | null;
   selection = new SelectionModel<UserProfile>(true, []);
   id: number;
@@ -42,7 +42,7 @@ export class AllUsersComponent implements OnInit {
   constructor(
     public httpClient: HttpClient,
     public dialog: MatDialog,
-    public usersService: UsersService,
+    public usersService: UserService,
     private snackBar: MatSnackBar
   ) { }
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -172,7 +172,7 @@ export class AllUsersComponent implements OnInit {
     );
   }
   public loadData() {
-    this.exampleDatabase = new UsersService(this.httpClient);
+    this.exampleDatabase = new UserService(this.httpClient);
     this.dataSource = new ExampleDataSource(
       this.exampleDatabase,
       this.paginator,
@@ -218,7 +218,7 @@ export class ExampleDataSource extends DataSource<UserProfile> {
   filteredData: UserProfile[] = [];
   renderedData: UserProfile[] = [];
   constructor(
-    public _exampleDatabase: UsersService,
+    public _exampleDatabase: UserService,
     public _paginator: MatPaginator,
     public _sort: MatSort
   ) {

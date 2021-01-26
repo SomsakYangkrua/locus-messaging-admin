@@ -9,20 +9,20 @@ export class AddUserComponent {
   userForm: FormGroup;
   constructor(private fb: FormBuilder) {
     this.userForm = this.fb.group({
-      id: [''],
-      username: ['', [Validators.required, Validators.pattern('[a-zA-Z]+')]],
-      password: ['', [Validators.required, Validators.pattern('[a-zA-Z]+')]],
-      firstname: [''],
-      lastname: [''],
+      id: ['10000'],
+      username: ['xx', [Validators.required, Validators.pattern('[a-zA-Z]+')]],
+      password: ['x', [Validators.required, Validators.pattern('[a-zA-Z]+')]],
+      firstname: ['x'],
+      lastname: ['x'],
       email: [
         '',
-        [Validators.required, Validators.email, Validators.minLength(5)]
+        [Validators.required, Validators.email, Validators.minLength(3)]
       ],
-      mobile: [''],
+      mobile: ['x'],
       role: [1],
-      token: [''],
-      tokenexpire: [''],
-      lastlogin: [''],
+      token: ['x'],
+      tokenexpire: ['x'],
+      lastlogin: ['x'],
     });
   }
   onSubmit() {

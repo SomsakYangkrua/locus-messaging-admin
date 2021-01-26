@@ -15,19 +15,19 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { UsersRoutingModule } from './users-routing.module';
-import { AllUsersComponent } from './all-users/all-users.component';
+import { AllUserComponent } from './all-users/all-users.component';
 import { DeleteDialogComponent } from './all-users/dialogs/delete/delete.component';
 import { FormDialogComponent } from './all-users/dialogs/form-dialog/form-dialog.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatMenuModule } from '@angular/material/menu';
-import { UsersService } from './all-users/users.service';
+import { UserService } from './all-users/users.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
-    AllUsersComponent,
+    AllUserComponent,
     DeleteDialogComponent,
     FormDialogComponent,
     AddUserComponent,
@@ -55,6 +55,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatProgressSpinnerModule,
     UsersRoutingModule,
   ],
-  providers: [UsersService],
+  providers: [UserService],
 })
-export class UsersModule {}
+export class UserModule {}

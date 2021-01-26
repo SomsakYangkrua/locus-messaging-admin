@@ -60,7 +60,7 @@ export const ROUTES: RouteInfo[] = [
         submenu: [],
       },
       {
-        path: '/users/edit-User',
+        path: '/users/edit-user',
         title: 'Edit User',
         moduleName: 'users',
         iconType: '',
