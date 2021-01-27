@@ -96,7 +96,7 @@ export class MainComponent {
     },
     legend: {
       show: false,
-      data: ['Single', 'Double', 'King', 'Executive Suite', 'Apartments'],
+      data: ['Line', 'Facebook Messaging', 'Whatsapp', 'Others', 'Eva'],
       textStyle: {
         color: '#9aa0ac',
         padding: [5, 10],
@@ -133,23 +133,23 @@ export class MainComponent {
         data: [
           {
             value: 734,
-            name: 'Single',
+            name: 'Line',
           },
           {
             value: 567,
-            name: 'Double',
+            name: 'Facebook Messaging',
           },
           {
             value: 464,
-            name: 'King',
+            name: 'Whatsapp',
           },
           {
             value: 364,
-            name: 'Executive Suite',
+            name: 'Eva',
           },
           {
             value: 323,
-            name: 'Apartments',
+            name: 'Others',
           },
         ],
       },
@@ -161,11 +161,11 @@ export class MainComponent {
   public areaChartOptions: Partial<areaChartOptions> = {
     series: [
       {
-        name: 'New Customers',
+        name: 'Bot',
         data: [31, 40, 28, 51, 42, 85, 77],
       },
       {
-        name: 'Old Customers',
+        name: 'Agent',
         data: [11, 32, 45, 32, 34, 52, 41],
       },
     ],

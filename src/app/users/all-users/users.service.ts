@@ -34,13 +34,42 @@ export class UserService {
 
   addUser(user: UserProfile): void {
     this.dialogData = user;
+    this.httpClient.post<any>(`${environment.apiUrl}/api/v1/users/add`,
+    user).subscribe(
+      (data) => {
+        this.dataChange.next(data.result);
+      },
+      (error: HttpErrorResponse) => {
+        this.isTblLoading = false;
+        console.log(error.name + ' ' + error.message);
+      }
+    );
   }
 
   updateUser(user: UserProfile): void {
     this.dialogData = user;
+    this.httpClient.put<any>(`${environment.apiUrl}/api/v1/users/update`,
+    user).subscribe(
+      (data) => {
+        this.dataChange.next(data.result);
+      },
+      (error: HttpErrorResponse) => {
+        this.isTblLoading = false;
+        console.log(error.name + ' ' + error.message);
+      }
+    );
   }
 
   deleteUser(id: number): void {
     console.log(id);
+    this.httpClient.delete<any>(`${environment.apiUrl}/api/v1/users/delete/` + id).subscribe(
+      (data) => {
+        this.dataChange.next(data.result);
+      },
+      (error: HttpErrorResponse) => {
+        this.isTblLoading = false;
+        console.log(error.name + ' ' + error.message);
+      }
+    );
   }
 }

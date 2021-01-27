@@ -67,6 +67,7 @@ export class AllUserComponent implements OnInit {
         action: 'add',
       },
     });
+
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 1) {
         // After dialog is closed we're doing frontend updates
@@ -84,6 +85,7 @@ export class AllUserComponent implements OnInit {
       }
     });
   }
+
   editCall(row) {
     this.id = row.id;
     const dialogRef = this.dialog.open(FormDialogComponent, {
@@ -92,6 +94,7 @@ export class AllUserComponent implements OnInit {
         action: 'edit',
       },
     });
+
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 1) {
         // When using an edit things are little different, firstly we find record inside DataService by id
@@ -113,6 +116,7 @@ export class AllUserComponent implements OnInit {
       }
     });
   }
+
   deleteItem(row) {
     this.id = row.id;
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
@@ -135,9 +139,11 @@ export class AllUserComponent implements OnInit {
       }
     });
   }
+
   private refreshTable() {
     this.paginator._changePageSize(this.paginator.pageSize);
   }
+
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -153,17 +159,21 @@ export class AllUserComponent implements OnInit {
         this.selection.select(row)
       );
   }
+
   removeSelectedRows() {
     const totalSelect = this.selection.selected.length;
     this.selection.selected.forEach((item) => {
+      this.userService.deleteUser(item.id);
       const index: number = this.dataSource.renderedData.findIndex(
-        (d) => d === item
+        (d) => d === item,
       );
+
       // console.log(this.dataSource.renderedData.findIndex((d) => d === item));
       this.exampleDatabase.dataChange.value.splice(index, 1);
       this.refreshTable();
       this.selection = new SelectionModel<UserProfile>(true, []);
     });
+
     this.showNotification(
       'snackbar-danger',
       totalSelect + ' Record Delete Successfully...!!!',
@@ -171,6 +181,7 @@ export class AllUserComponent implements OnInit {
       'center'
     );
   }
+
   public loadData() {
     this.exampleDatabase = new UserService(this.httpClient);
     this.dataSource = new ExampleDataSource(
@@ -178,6 +189,7 @@ export class AllUserComponent implements OnInit {
       this.paginator,
       this.sort
     );
+
     fromEvent(this.filter.nativeElement, 'keyup')
       // .debounceTime(150)
       // .distinctUntilChanged()
@@ -188,6 +200,7 @@ export class AllUserComponent implements OnInit {
         this.dataSource.filter = this.filter.nativeElement.value;
       });
   }
+
   showNotification(colorName, text, placementFrom, placementAlign) {
     this.snackBar.open(text, '', {
       duration: 2000,
@@ -196,6 +209,7 @@ export class AllUserComponent implements OnInit {
       panelClass: colorName,
     });
   }
+
   // context menu
   onContextMenu(event: MouseEvent, item: UserProfile) {
     event.preventDefault();
@@ -209,12 +223,15 @@ export class AllUserComponent implements OnInit {
 
 export class ExampleDataSource extends DataSource<UserProfile> {
   _filterChange = new BehaviorSubject('');
+
   get filter(): string {
     return this._filterChange.value;
   }
+
   set filter(filter: string) {
     this._filterChange.next(filter);
   }
+
   filteredData: UserProfile[] = [];
   renderedData: UserProfile[] = [];
   constructor(
@@ -250,6 +267,7 @@ export class ExampleDataSource extends DataSource<UserProfile> {
             ).toLowerCase();
             return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
           });
+
         // Sort filtered data
         const sortedData = this.sortData(this.filteredData.slice());
         // Grab the page's slice of the filtered sorted data.
@@ -270,6 +288,7 @@ export class ExampleDataSource extends DataSource<UserProfile> {
     if (!this._sort.active || this._sort.direction === '') {
       return data;
     }
+
     return data.sort((a, b) => {
       let propertyA: number | string = '';
       let propertyB: number | string = '';
@@ -290,6 +309,7 @@ export class ExampleDataSource extends DataSource<UserProfile> {
         (valueA < valueB ? -1 : 1) * (this._sort.direction === 'asc' ? 1 : -1)
       );
     });
+
   }
 }
 

@@ -67,14 +67,19 @@ export class FormDialogComponent {
   }
 
   submit() {
-    // emppty stuff
+    this.userService.updateUser(this.userProfileForm.getRawValue())
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
   public confirmAdd(): void {
-    this.userService.addUser(this.userProfileForm.getRawValue());
+    if (this.action === 'edit') {
+      this.submit();
+    }else{
+      this.userService.addUser(this.userProfileForm.getRawValue());
+    }
+
   }
 
 }

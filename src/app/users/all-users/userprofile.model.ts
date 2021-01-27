@@ -1,3 +1,7 @@
+import { timestamp } from "rxjs/operators";
+import {formatDate} from '@angular/common';
+
+
 export class UserProfile{
   id: number;
   username: string;
@@ -15,9 +19,9 @@ export class UserProfile{
 
   constructor(user) {
     {
-      this.id  = user.id || 0;
-      this.username = user.username || 'test';
-      this.password = user.password || '123';
+      this.id  = user.id || this.getUserID();
+      this.username = user.username || '';
+      this.password = user.password || '';
       this.firstname = user.firstname || '';
       this.lastname = user.lastname || '';
       this.email = user.email || '';
@@ -31,29 +35,11 @@ export class UserProfile{
     }
   }
 
-  // constructor(user) {
-  //   {
-  //     this.id  = 0;
-  //     this.username = 'test';
-  //     this.password = '123';
-  //     this.firstname = '';
-  //     this.lastname = '';
-  //     this.email = '';
-  //     this.mobile = '';
-  //     this.enable = 1;
-  //     this.role = 1;
-  //     this.token = '';
-  //     this.tokenexpire = '';
-  //     this.createdate = '';
-  //     this.lastlogin  = '';
-  //   }
-  // }
-
-  public getRandomID(): string {
-    const S4 = () => {
-      return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-    };
-    return S4() + S4();
+  public getUserID(): number {
+    //2021127093931
+    var id: string;
+    id = formatDate(Date.now(),'MMddHHmmSS','en-US');
+    return parseInt(id)
   }
 
 }

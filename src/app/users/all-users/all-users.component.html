@@ -91,7 +91,7 @@
 
                       <!-- ID Column -->
                       <ng-container matColumnDef="id">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header>Id
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>ID
                         </mat-header-cell>
                         <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
                       </ng-container>
@@ -99,49 +99,55 @@
                       <ng-container matColumnDef="username">
                         <mat-header-cell *matHeaderCellDef mat-sort-header>UserName
                         </mat-header-cell>
-                        <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)"> {{row.username}}
+                        <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
+                          {{row.username}}
                         </mat-cell>
                       </ng-container>
 
                       <ng-container matColumnDef="password">
                         <mat-header-cell *matHeaderCellDef mat-sort-header>Password
                         </mat-header-cell>
-                        <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)"> {{row.password}}
+                        <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
+                          {{row.password}}
                         </mat-cell>
                       </ng-container>
 
                       <ng-container matColumnDef="firstname">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header>Firstname
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>FirstName
                         </mat-header-cell>
                         <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
                           {{row.firstname}}</mat-cell>
                       </ng-container>
 
                       <ng-container matColumnDef="lastname">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header>Lastname
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>LastName
                         </mat-header-cell>
-                        <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)"> {{row.lastname}}
+                        <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
+                          {{row.lastname}}
                         </mat-cell>
                       </ng-container>
 
                       <ng-container matColumnDef="email">
                         <mat-header-cell *matHeaderCellDef mat-sort-header>Email
                         </mat-header-cell>
-                        <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)"> {{row.email}}
+                        <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
+                          {{row.email}}
                         </mat-cell>
                       </ng-container>
 
                       <ng-container matColumnDef="mobile">
                         <mat-header-cell *matHeaderCellDef mat-sort-header>Mobile
                         </mat-header-cell>
-                        <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)"> {{row.mobile}}
+                        <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
+                          {{row.mobile}}
                         </mat-cell>
                       </ng-container>
 
                       <ng-container matColumnDef="enable">
                         <mat-header-cell *matHeaderCellDef mat-sort-header>Enable
                         </mat-header-cell>
-                        <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)"> {{row.enable}}
+                        <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
+                          {{row.enable}}
                         </mat-cell>
                       </ng-container>
 
