@@ -1,13 +1,14 @@
+import { Systemconfig } from './systemconfig.model';
 import { Parameter } from './parameter.model';
 import { Allsystemconfig } from './allsystemconfig.model';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Systemconfig } from './systemconfig.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { env } from 'process';
+import { environment } from 'src/environments/environment';
+
 @Injectable()
-export class SystemsconfigService {
-  private readonly API_URL = 'assets/data/department.json';
+export class SystemsService {
+  //private readonly API_URL = 'assets/data/department.json';
   isTblLoading = true;
   dataChange: BehaviorSubject<Systemconfig[]> = new BehaviorSubject<Systemconfig[]>([]);
   // Temporarily stores data from dialogs
@@ -22,7 +23,7 @@ export class SystemsconfigService {
   /** CRUD METHODS */
   getSystemConfig(): void {
     let mapConfig = new Map();
-    this.httpClient.get<any>(this.API_URL).subscribe(
+    this.httpClient.get<any>(`${environment.apiUrl}/api/v1/systems/config/list`).subscribe(
       (data) => {
         var allsystemconfig: Allsystemconfig;
         var systemConfig = new Systemconfig();

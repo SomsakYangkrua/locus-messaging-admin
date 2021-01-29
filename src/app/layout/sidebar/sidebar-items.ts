@@ -73,6 +73,31 @@ export const ROUTES: RouteInfo[] = [
       // },
     ],
   },
+  {
+    path: '',
+    title: 'Systems',
+    moduleName: 'systemsconfig',
+    iconType: 'material-icons-two-tone',
+    icon: 'settings',
+    class: 'menu-toggle',
+    groupTitle: false,
+    badge: '',
+    badgeClass: '',
+    submenu: [
+      {
+        path: '/systemsconfig/edit-systemconfig',
+        title: 'System Configuration',
+        moduleName: 'systemsconfig',
+        iconType: '',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        badge: '',
+        badgeClass: '',
+        submenu: [],
+      }
+    ],
+  },
   // {
   //   path: '',
   //   title: 'Rooms',
