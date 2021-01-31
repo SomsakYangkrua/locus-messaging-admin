@@ -76,7 +76,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: '',
     title: 'Systems',
-    moduleName: 'systemsconfig',
+    moduleName: 'systems',
     iconType: 'material-icons-two-tone',
     icon: 'settings',
     class: 'menu-toggle',
@@ -85,9 +85,9 @@ export const ROUTES: RouteInfo[] = [
     badgeClass: '',
     submenu: [
       {
-        path: '/systemsconfig/edit-systemconfig',
+        path: '/systems/edit-systemconfig',
         title: 'System Configuration',
-        moduleName: 'systemsconfig',
+        moduleName: 'systems',
         iconType: '',
         icon: '',
         class: 'ml-menu',

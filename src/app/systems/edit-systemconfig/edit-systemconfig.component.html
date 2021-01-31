@@ -5,14 +5,14 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <ul class="breadcrumb breadcrumb-style ">
             <li class="breadcrumb-item">
-              <h4 class="page-title">Edit User</h4>
+              <h4 class="page-title">Systems</h4>
             </li>
             <li class="breadcrumb-item bcrumb-1">
               <a routerLink="/dashboard/main">
                 <i class="fas fa-home"></i> Home</a>
             </li>
             <li class="breadcrumb-item bcrumb-2">
-              <a href="#" onClick="return false;">Users</a>
+              <a href="#" onClick="return false;">Systems</a>
             </li>
             <li class="breadcrumb-item active">Edit</li>
           </ul>
@@ -23,123 +23,481 @@
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
         <div class="card">
           <div class="header">
-            <h2>Edit User</h2>
-
+            <h2>Configurations</h2>
           </div>
           <div class="body">
-            <form class="m-4" [formGroup]="userProfileForm" (ngSubmit)="onSubmit()">
-
+            <form class="m-4" [formGroup]="editSystemconfigForm" (ngSubmit)="onSubmit()">
               <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                  <mat-form-field class="example-full-width mb-3" appearance="outline">
-                    <mat-label>User ID</mat-label>
-                    <input matInput formControlName="id" required readonly>
-                    <mat-error *ngIf="userProfileForm.get('id').hasError('required')">
-                      ID no is required
-                    </mat-error>
-                  </mat-form-field>
-                </div>
+                <div class="card">
+                  <div class="body">
+                    <mat-tab-group>
+                      <mat-tab label="Server">
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>HTTP SERVER</mat-label>
+                              <input matInput formControlName="host" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('host').hasError('required')">
+                                HTTP Host no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>UDP SERVER</mat-label>
+                              <input matInput formControlName="udp_bind_addr" required>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                            <mat-checkbox class="example-margin" formControlName="bind_tls" color="primary">Bind TLS</mat-checkbox>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Key File</mat-label>
+                              <input matInput formControlName="key_file" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('key_file').hasError('required')">
+                                key_file no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Cert File</mat-label>
+                              <input matInput formControlName="cert_file" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('cert_file').hasError('required')">
+                                cert_file no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
 
-                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                  <mat-form-field class="example-full-width mb-3" appearance="outline">
-                    <mat-label>Select Role</mat-label>
-                    <mat-select formControlName="role" required>
-                      <mat-option [value]=1>
-                        Admin
-                      </mat-option>
-                      <mat-option [value]=2>
-                        User
-                      </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="userProfileForm.get('role').hasError('required')">
-                      Select Role
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
+                      </mat-tab>
+                      <mat-tab label="Authorize">
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Authorize Key</mat-label>
+                              <input matInput formControlName="auth_key" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('auth_key').hasError('required')">
+                                auth_key no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Authorize Realm</mat-label>
+                              <input matInput formControlName="auth_Realm" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('auth_Realm').hasError('required')">
+                                auth_Realm no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Default Admin</mat-label>
+                              <input matInput formControlName="admin_username" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('admin_username').hasError('required')">
+                                admin_username no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Default Admin Password</mat-label>
+                              <input matInput formControlName="admin_password" type="password" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('admin_password').hasError('required')">
+                                admin_password no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                      </mat-tab>
+                      <mat-tab label="Databases">
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Select Relational Database Type</mat-label>
+                              <mat-select formControlName="db_type" required>
+                                <mat-option [value]='"mysql"'>
+                                  MySql
+                                </mat-option>
+                                <mat-option [value]='"mssql"'>
+                                  Mssql
+                                </mat-option>
+                                <mat-option [value]='"oracle"'>
+                                  Oracle
+                                </mat-option>
+                              </mat-select>
+                              <mat-error *ngIf="editSystemconfigForm.get('db_type').hasError('required')">
+                                Select Database Type
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
 
-              <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                  <mat-form-field class="example-full-width mb-3" appearance="outline">
-                    <mat-label>Username</mat-label>
-                    <input matInput formControlName="username" required>
-                    <mat-error *ngIf="userProfileForm.get('username').hasError('required')">
-                      Username no is required
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                  <mat-form-field class="example-full-width mb-3" appearance="outline">
-                    <mat-label>Password</mat-label>
-                    <input matInput formControlName="password" type="password" required>
-                    <mat-error *ngIf="userProfileForm.get('password').hasError('required')">
-                      Password no is required
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>DataBase Connection String</mat-label>
+                              <input matInput formControlName="db_str_cnn" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('db_str_cnn').hasError('required')">
+                                db_str_cnn is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>InmemoryRedis: Server</mat-label>
+                              <input matInput formControlName="in_memory_db_server" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('in_memory_db_server').hasError('required')">
+                                Redis Server is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>InmemoryRedis: dbname</mat-label>
+                              <input matInput formControlName="in_memory_db_database" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('in_memory_db_database').hasError('required')">
+                                dbname no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>InmemoryRedis: password</mat-label>
+                              <input matInput formControlName="in_memory_db.pwd" type="password">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>InmemoryRedis: expiration(0=no expired time)</mat-label>
+                              <input matInput formControlName="in_memory_db_expiration" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('in_memory_db_expiration').hasError('required')">
+                                expiration no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>InmemoryRedis: pool size</mat-label>
+                              <input matInput formControlName="in_memory_db_PoolSize" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('in_memory_db_PoolSize').hasError('required')">
+                                pool size no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>InmemoryRedis: read/write timeout</mat-label>
+                              <input matInput formControlName="in_memory_db_Read_WriteTimeout" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('in_memory_db_Read_WriteTimeout').hasError('required')">
+                                Read/Write timeout no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>InmemoryRedis: min idle connection</mat-label>
+                              <input matInput formControlName="in_memory_db_MinIdleConns" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('in_memory_db_MinIdleConns').hasError('required')">
+                                min idle connection no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>InmemoryRedis: max connection age</mat-label>
+                              <input matInput formControlName="in_memory_db_MaxConnAge" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('in_memory_db_MaxConnAge').hasError('required')">
+                                max connection age no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>InmemoryRedis: pool timeout</mat-label>
+                              <input matInput formControlName="in_memory_db_PoolTimeout" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('in_memory_db_PoolTimeout').hasError('required')">
+                                pool timeout no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
 
-              <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                  <mat-form-field class="example-full-width mb-3" appearance="outline">
-                    <mat-label>Firstname</mat-label>
-                    <input matInput formControlName="firstname" required>
-                    <mat-error *ngIf="userProfileForm.get('firstname').hasError('required')">
-                      Firstname no is required
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                  <mat-form-field class="example-full-width mb-3" appearance="outline">
-                    <mat-label>Lastname</mat-label>
-                    <input matInput formControlName="lastname" required>
-                    <mat-error *ngIf="userProfileForm.get('lastname').hasError('required')">
-                      Lastname no is required
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
 
-              <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                  <mat-form-field class="example-full-width mb-3" appearance="outline">
-                    <mat-label>Email</mat-label>
-                    <input matInput formControlName="email" required>
-                    <mat-error *ngIf="userProfileForm.get('email').hasError('required')">
-                      Email no is required
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                  <mat-form-field class="example-full-width mb-3" appearance="outline">
-                    <mat-label>Mobile</mat-label>
-                    <input matInput formControlName="mobile" required>
-                  </mat-form-field>
-                </div>
-              </div>
+                      </mat-tab>
+                      <mat-tab label="MessageQueue">
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Rabbit MQ URL</mat-label>
+                              <input matInput formControlName="amqp_url" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('amqp_url').hasError('required')">
+                                amqp_url no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Qname</mat-label>
+                              <input matInput formControlName="amqp_qname" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('amqp_qname').hasError('required')">
+                                amqp_qname no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Exchange</mat-label>
+                              <input matInput formControlName="amqp_exchange" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('amqp_exchange').hasError('required')">
+                                amqp_exchange no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Routing Key</mat-label>
+                              <input matInput formControlName="amqp_routing_key" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('amqp_routing_key').hasError('required')">
+                                amqp_routing_key no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Content Type</mat-label>
+                              <input matInput formControlName="amqp_content_type" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('amqp_content_type').hasError('required')">
+                                amqp_content_type no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>RPC Timeout</mat-label>
+                              <input matInput formControlName="amqp_rpc_timeout" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('amqp_rpc_timeout').hasError('required')">
+                                amqp_rpc_timeout no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
 
-              <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                  <mat-form-field class="example-full-width mb-3" appearance="outline">
-                    <mat-label>Select User Status</mat-label>
-                    <mat-select formControlName="enable" required>
-                      <mat-option [value]=1>
-                        Enable
-                      </mat-option>
-                      <mat-option [value]=0>
-                        Disable
-                      </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="userProfileForm.get('enable').hasError('required')">
-                      Select User Status
-                    </mat-error>
-                  </mat-form-field>
+                      </mat-tab>
+                      <mat-tab label="Asynchronize Workers">
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Asynchronize Queue Size</mat-label>
+                              <input matInput formControlName="background_queue_size" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('background_queue_size').hasError('required')">
+                                background_queue_size no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Asynchronize Worker Size</mat-label>
+                              <input matInput formControlName="background_worker_size" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('background_worker_size').hasError('required')">
+                                background_worker_size no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                      </mat-tab>
+                      <mat-tab label="Line Interface">
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Line Webhook</mat-label>
+                              <input matInput formControlName="webhook_url" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('webhook_url').hasError('required')">
+                                webhook_url no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Channel Secret</mat-label>
+                              <input matInput formControlName="webhook_channel_secret" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('webhook_channel_secret').hasError('required')">
+                                webhook_channel_secret no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Channel Token</mat-label>
+                              <input matInput formControlName="webhook_channel_token" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('webhook_channel_token').hasError('required')">
+                                webhook_channel_token no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Session Expire Time</mat-label>
+                              <input matInput formControlName="webhook_session_expire_time" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('webhook_session_expire_time').hasError('required')">
+                                webhook_session_expire_time no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Temp Path</mat-label>
+                              <input matInput formControlName="webhook_temp_path" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('webhook_temp_path').hasError('required')">
+                                webhook_temp_path no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Audio Type</mat-label>
+                              <input matInput formControlName="webhook_audio_type" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('webhook_audio_type').hasError('required')">
+                                webhook_audio_type no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Audio Language</mat-label>
+                              <input matInput formControlName="webhook_audio_lang" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('webhook_audio_lang').hasError('required')">
+                                webhook_audio_lang no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Sticker URL</mat-label>
+                              <input matInput formControlName="webhook_line_sticker_url" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('webhook_line_sticker_url').hasError('required')">
+                                webhook_line_sticker_url no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Detect Keyword switch to Pureconnect Agent</mat-label>
+                              <input matInput formControlName="webhook_keyword_mapping_topureconnect" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('webhook_keyword_mapping_topureconnect').hasError('required')">
+                                webhook_keyword_mapping_topureconnect no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Agent Respone Timeout</mat-label>
+                              <input matInput formControlName="webhook_agent_respone_timeout" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('webhook_agent_respone_timeout').hasError('required')">
+                                webhook_agent_respone_timeout no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Default Agent Respone Text</mat-label>
+                              <input matInput formControlName="webhook_agent_respone_default_text" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('webhook_agent_respone_default_text').hasError('required')">
+                                webhook_agent_respone_default_text no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+
+
+                      </mat-tab>
+                      <mat-tab label="Messenger Interface">
+
+                      </mat-tab>
+                      <mat-tab label="Whatsapp Interface">
+
+                      </mat-tab>
+                      <mat-tab label="Pureconnect Interface">
+
+                      </mat-tab>
+                      <mat-tab label="Google Dialogflow Interface">
+
+                      </mat-tab>
+
+                    </mat-tab-group>
+                  </div>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
-                  <button class="mr-3" [disabled]="!userProfileForm.valid " mat-raised-button color="primary">Submit</button>
+                  <button class="mr-3" [disabled]="!editSystemconfigForm.valid " mat-raised-button color="primary">Submit</button>
                   <button type="button" mat-button>Cancel</button>
                 </div>
               </div>

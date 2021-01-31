@@ -13,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSortModule } from '@angular/material/sort';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SystemsRoutingModule } from './systems-routing.module';
@@ -44,6 +45,7 @@ import { EditSystemconfigComponent } from './edit-systemconfig/edit-systemconfig
     MatCheckboxModule,
     MaterialFileInputModule,
     MatMenuModule,
+    MatTabsModule,
     MatProgressSpinnerModule,
     SystemsRoutingModule,
   ],
