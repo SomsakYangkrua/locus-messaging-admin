@@ -30,7 +30,6 @@
               <div class="row">
                 <div class="card">
                   <div class="body">
-
                     <mat-tab-group>
                       <mat-tab label="Server">
                         <div class="row">
@@ -712,7 +711,7 @@
                           <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                             <mat-form-field class="example-full-width mb-3" appearance="outline">
                               <mat-label>Password</mat-label>
-                              <input matInput formControlName="iwt_password" required>
+                              <input matInput formControlName="iwt_password" type="password" required>
                               <mat-error *ngIf="editSystemconfigForm.get('iwt_password').hasError('required')">
                                 password no is required
                               </mat-error>
