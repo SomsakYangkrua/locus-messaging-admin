@@ -1,7 +1,6 @@
+import { EditSystemconfigComponent } from './edit-systemconfig/edit-systemconfig.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EditSystemconfigComponent } from './edit-systemconfig/edit-systemconfig.component';
-
 
 const routes: Routes = [
   {
@@ -14,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SystemsRoutingModule { }
+export class SystemsconfigRoutingModule { }

@@ -45,6 +45,7 @@ export class AllUserComponent implements OnInit {
     public userService: UserService,
     private snackBar: MatSnackBar
   ) { }
+
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild('filter', { static: true }) filter: ElementRef;

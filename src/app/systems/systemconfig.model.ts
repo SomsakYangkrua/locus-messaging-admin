@@ -1,5 +1,5 @@
 export class Systemconfig {
-  //mapConfig: Map<string,string>;
+  id: string;
   mode: string;
   auth_key: string;
   auth_Realm: string;
@@ -70,7 +70,7 @@ export class Systemconfig {
 
   constructor() {
     {
-      //this.mapConfig = new Map();
+      this.id = "101";
       this.mode ='';
       this.auth_key ='';
       this.auth_Realm ='';
