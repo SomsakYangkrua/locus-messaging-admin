@@ -1,7 +1,7 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -19,6 +19,7 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
+// import {CdkTableModule} from '@angular/cdk/table';
 // import { MatBadgeModule } from '@angular/material/badge';
 // import { MatChipsModule } from '@angular/material/chips';
 // import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -29,7 +30,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 // import { MatCardModule } from '@angular/material/card';
 // import { MatProgressBarModule } from '@angular/material/progress-bar';
 // import { MatSliderModule } from '@angular/material/slider';
-// import { MatTabsModule } from '@angular/material/tabs';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -43,7 +43,7 @@ import { EditSystemconfigComponent } from './edit-systemconfig/edit-systemconfig
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatTableModule,
+    MatTabsModule,
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
@@ -61,7 +61,5 @@ import { EditSystemconfigComponent } from './edit-systemconfig/edit-systemconfig
     MatProgressSpinnerModule,
     SystemsconfigRoutingModule,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [SystemsconfigService],
 })
 export class SystemsconfigModule {}
