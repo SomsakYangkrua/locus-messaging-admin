@@ -155,7 +155,8 @@
                         <mat-header-cell *matHeaderCellDef mat-sort-header>Role
                         </mat-header-cell>
                         <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
-                          {{row.role}}</mat-cell>
+                          {{row.roledesc }}
+                        </mat-cell>
                       </ng-container>
 
                       <!-- actions -->

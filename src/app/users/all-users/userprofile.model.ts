@@ -12,6 +12,7 @@ export class UserProfile{
   mobile: string;
   enable: number;
   role:   number;
+  roledesc:   string;
   token: string;
   tokenexpire: string;
   createdate: string;
@@ -28,6 +29,7 @@ export class UserProfile{
       this.mobile = user.mobile || '';
       this.enable = user.enable || 1;
       this.role = user.role || 1;
+      this.roledesc = user.roledesc || 'Admin';
       this.token = '';
       this.tokenexpire = '';
       this.createdate = '';

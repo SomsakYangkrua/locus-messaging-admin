@@ -67,17 +67,25 @@ export class FormDialogComponent {
   }
 
   submit() {
-    this.userService.updateUser(this.userProfileForm.getRawValue())
+    this.userService.updateUser(this.userProfile)
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
   public confirmAdd(): void {
+    this.userProfile = this.userProfileForm.value;
+    if (this.userProfile.role == 1) {
+      this.userProfile.roledesc = "Admin"
+    }else{
+      this.userProfile.roledesc = "User"
+    }
+
     if (this.action === 'edit') {
       this.submit();
     }else{
-      this.userService.addUser(this.userProfileForm.getRawValue());
+
+      this.userService.addUser(this.userProfile);
     }
 
   }
