@@ -15,9 +15,8 @@ export class SystemsconfigService {
     return this.httpClient.get<any>(`${environment.apiUrl}/api/v1/systems/config/list`);
   }
 
-  updateSystemConfig(systemConfig: Systemconfig): void {
-    //192.168.22.129:15000/api/v1/systems/config/update
-    //this.dialogData = systemConfig;
+  updateSystemConfig(systemConfig: Systemconfig): Observable<any> {
+    return this.httpClient.put<any>(`${environment.apiUrl}/api/v1/systems/config/update`, systemConfig);
   }
 }
 

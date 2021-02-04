@@ -2,6 +2,7 @@ import { SystemsconfigService } from './../systemsconfig.service';
 import { Systemconfig } from './../systemconfig.model';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -28,6 +29,7 @@ export class EditSystemconfigComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private snackBar: MatSnackBar,
     private systemsconfigService: SystemsconfigService
     )
   {
@@ -44,10 +46,27 @@ export class EditSystemconfigComponent implements OnInit {
   }
 
   onSubmit() {
-    //console.log('Form Value', this.userProfileForm.value);
+    console.log('Form Value', this.editSystemconfigForm.value);
+    this.systemsconfig = this.editSystemconfigForm.value;
+    this.systemsconfig.bind_tls = `${this.systemsconfig.bind_tls}`;
+    this.systemsconfigService.updateSystemConfig(this.systemsconfig)
+    .subscribe((data)=>{
+      this.showNotification(
+        'snackbar-success',
+        'Save Record Successfully...!!!',
+        'bottom',
+        'center'
+      );
+    });
   }
 
   createSystemconfigForm(): FormGroup {
+    var bind_tls: Number;
+    if (this.systemsconfig.bind_tls == 'false') {
+      bind_tls = 0;
+    }else{
+      bind_tls = 1;
+    }
     return this.fb.group({
       mode: 'Dev',
       auth_key: [this.systemsconfig.auth_key || ''],
@@ -68,7 +87,7 @@ export class EditSystemconfigComponent implements OnInit {
       in_memory_db_PoolTimeout: [this.systemsconfig.in_memory_db_PoolTimeout || ''],
 
       host: [this.systemsconfig.host || ''],
-      bind_tls: [this.systemsconfig.bind_tls || 'false'],
+      bind_tls: [bind_tls],
       key_file: [this.systemsconfig.key_file || ''],
       cert_file: [this.systemsconfig.cert_file || ''],
       udp_bind_addr: [this.systemsconfig.udp_bind_addr || '127.0.0.1:3497'],
@@ -129,5 +148,13 @@ export class EditSystemconfigComponent implements OnInit {
     });
   }
 
+  showNotification(colorName, text, placementFrom, placementAlign) {
+    this.snackBar.open(text, '', {
+      duration: 2000,
+      verticalPosition: placementFrom,
+      horizontalPosition: placementAlign,
+      panelClass: colorName,
+    });
+  }
 
 }

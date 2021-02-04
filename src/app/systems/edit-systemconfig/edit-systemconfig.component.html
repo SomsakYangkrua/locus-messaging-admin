@@ -194,7 +194,7 @@
                         <div class="row">
                           <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                             <mat-form-field class="example-full-width mb-3" appearance="outline">
-                              <mat-label>InmemoryRedis: expiration(0=no expired time)</mat-label>
+                              <mat-label>InmemoryRedis: expiration(0=no expired time) Seconds</mat-label>
                               <input matInput formControlName="in_memory_db_expiration" required>
                               <mat-error *ngIf="editSystemconfigForm.get('in_memory_db_expiration').hasError('required')">
                                 expiration no is required
@@ -216,7 +216,7 @@
                         <div class="row">
                           <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                             <mat-form-field class="example-full-width mb-3" appearance="outline">
-                              <mat-label>InmemoryRedis: read/write timeout</mat-label>
+                              <mat-label>InmemoryRedis: read/write timeout (seconds)</mat-label>
                               <input matInput formControlName="in_memory_db_Read_WriteTimeout" required>
                               <mat-error *ngIf="editSystemconfigForm.get('in_memory_db_Read_WriteTimeout').hasError('required')">
                                 Read/Write timeout no is required
@@ -249,7 +249,7 @@
                         <div class="row">
                           <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                             <mat-form-field class="example-full-width mb-3" appearance="outline">
-                              <mat-label>InmemoryRedis: pool timeout</mat-label>
+                              <mat-label>InmemoryRedis: pool timeout (seconds)</mat-label>
                               <input matInput formControlName="in_memory_db_PoolTimeout" required>
                               <mat-error *ngIf="editSystemconfigForm.get('in_memory_db_PoolTimeout').hasError('required')">
                                 pool timeout no is required
@@ -318,7 +318,7 @@
                         <div class="row">
                           <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                             <mat-form-field class="example-full-width mb-3" appearance="outline">
-                              <mat-label>RPC Timeout</mat-label>
+                              <mat-label>RPC Timeout (seconds)</mat-label>
                               <input matInput formControlName="amqp_rpc_timeout" required>
                               <mat-error *ngIf="editSystemconfigForm.get('amqp_rpc_timeout').hasError('required')">
                                 amqp_rpc_timeout no is required
@@ -390,7 +390,7 @@
                         <div class="row">
                           <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                             <mat-form-field class="example-full-width mb-3" appearance="outline">
-                              <mat-label>Session Expire Time</mat-label>
+                              <mat-label>Session Expire Time (seconds)</mat-label>
                               <input matInput formControlName="webhook_session_expire_time" required>
                               <mat-error *ngIf="editSystemconfigForm.get('webhook_session_expire_time').hasError('required')">
                                 webhook_session_expire_time no is required
@@ -456,7 +456,7 @@
                         <div class="row">
                           <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                             <mat-form-field class="example-full-width mb-3" appearance="outline">
-                              <mat-label>Agent Respone Timeout</mat-label>
+                              <mat-label>Agent Respone Timeout (seconds)</mat-label>
                               <input matInput formControlName="webhook_agent_respone_timeout" required>
                               <mat-error *ngIf="editSystemconfigForm.get('webhook_agent_respone_timeout').hasError('required')">
                                 webhook_agent_respone_timeout no is required
@@ -528,7 +528,7 @@
                         <div class="row">
                           <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                             <mat-form-field class="example-full-width mb-3" appearance="outline">
-                              <mat-label>Connection Timeout</mat-label>
+                              <mat-label>Connection Timeout (seconds)</mat-label>
                               <input matInput formControlName="whatsapp_timeout" required>
                               <mat-error *ngIf="editSystemconfigForm.get('whatsapp_timeout').hasError('required')">
                                 connection timeout no is required
@@ -575,7 +575,7 @@
                           <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                             <mat-form-field class="example-full-width mb-3" appearance="outline">
                               <mat-label>SessionID</mat-label>
-                              <input matInput formControlName="dialogflow_sessionID" required>
+                              <input matInput formControlName="dialogflow_sessionID">
                               <mat-error *ngIf="editSystemconfigForm.get('dialogflow_sessionID').hasError('required')">
                                 sessionID no is required
                               </mat-error>
@@ -732,7 +732,7 @@
                         <div class="row">
                           <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                             <mat-form-field class="example-full-width mb-3" appearance="outline">
-                              <mat-label>Message Poll Interval</mat-label>
+                              <mat-label>Message Poll Interval (seconds)</mat-label>
                               <input matInput formControlName="iwt_chat_message_poll_interval" required>
                               <mat-error *ngIf="editSystemconfigForm.get('iwt_chat_message_poll_interval').hasError('required')">
                                 message poll interval no is required
