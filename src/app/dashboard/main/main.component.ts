@@ -1,4 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
+import { Param } from './../param.model';
+import { Subscription, timer } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { DashboardService } from './../dashboard.service';
+import { Sessionsummary } from './../sessionsummary.model';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -50,8 +55,20 @@ export type areaChartOptions = {
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
-export class MainComponent {
+export class MainComponent implements OnInit{
   @ViewChild('chart') chart: ChartComponent;
+
+  private subscription: Subscription;
+  public sessionSummary: Sessionsummary = new Sessionsummary();
+  public sessionDonutChartData: Param[] = new Array(
+    new Param("Line", 0),
+    new Param("Facebook Messaging", 0),
+    new Param("Whatsapp", 0),
+    new Param("IWT", 0),
+  );
+
+  //public donut_data: number[];
+
   // sparkline chart start
   public commonBarSparklineOptions: Partial<SparklineChartOptions> = {
     chart: {
@@ -89,14 +106,14 @@ export class MainComponent {
 
   // sparkline chart end
   // donut chart start
-  donut_chart: EChartOption = {
+  public donut_chart: EChartOption = {
     tooltip: {
       trigger: 'item',
       formatter: '{a} <br/>{b} : {c} ({d}%)',
     },
     legend: {
       show: false,
-      data: ['Line', 'Facebook Messaging', 'Whatsapp', 'Others', 'Eva'],
+      data: ['Line', 'Facebook Messaging', 'Whatsapp', 'IWT'],
       textStyle: {
         color: '#9aa0ac',
         padding: [5, 10],
@@ -130,32 +147,12 @@ export class MainComponent {
             },
           },
         },
-        data: [
-          {
-            value: 734,
-            name: 'Line',
-          },
-          {
-            value: 567,
-            name: 'Facebook Messaging',
-          },
-          {
-            value: 464,
-            name: 'Whatsapp',
-          },
-          {
-            value: 364,
-            name: 'Eva',
-          },
-          {
-            value: 323,
-            name: 'Others',
-          },
-        ],
+        data: this.sessionDonutChartData,
       },
     ],
-    color: ['#3CDBC2', '#FF2742', '#235A66', '#FFAB2F', '#86AEAC'],
+    color: ['#13E916', '#337DFF', '#235A66', '#FF7733'],
   };
+
   // donut chart end
   // area chart start
   public areaChartOptions: Partial<areaChartOptions> = {
@@ -212,5 +209,49 @@ export class MainComponent {
   };
 
   // area chart end
-  constructor() {}
-}
+  constructor(private dashboardService: DashboardService) {}
+
+
+
+  ngOnInit(): void {
+    this.subscription = timer(0, 5000).pipe(
+      switchMap(() => this.dashboardService.getDashboard())
+    ).subscribe((data) => {
+      data.result.session_summary.forEach(item => {
+        switch (item.name) {
+          case 'Line':
+            this.sessionSummary.line = item.value;
+            this.sessionDonutChartData[0].value = item.value;
+            break;
+          case 'Messenger':
+            this.sessionSummary.messenger = item.value;
+            this.sessionDonutChartData[1].value = item.value;
+            break;
+          case 'Whatsapp':
+            this.sessionSummary.whatsapp = item.value;
+            this.sessionDonutChartData[2].value = item.value;
+            break;
+          case 'IWT':
+            this.sessionSummary.iwt = item.value;
+            this.sessionDonutChartData[3].value = item.value;
+            break;
+          default:
+            break;
+        }
+      });
+
+
+    });
+
+    this.sessionSummary.line = 0;
+    this.sessionSummary.messenger = 0;
+    this.sessionSummary.whatsapp = 0;
+    this.sessionSummary.iwt = 0;
+
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+}//end class
