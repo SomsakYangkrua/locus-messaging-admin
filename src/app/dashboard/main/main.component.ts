@@ -67,7 +67,7 @@ export class MainComponent implements OnInit{
     new Param("IWT", 0),
   );
 
-  //public donut_data: number[];
+  public tracing_session: string[];
 
   // sparkline chart start
   public commonBarSparklineOptions: Partial<SparklineChartOptions> = {
@@ -211,12 +211,11 @@ export class MainComponent implements OnInit{
   // area chart end
   constructor(private dashboardService: DashboardService) {}
 
-
-
   ngOnInit(): void {
-    this.subscription = timer(0, 5000).pipe(
+    this.subscription = timer(0, 2000).pipe(
       switchMap(() => this.dashboardService.getDashboard())
     ).subscribe((data) => {
+      this.tracing_session = data.result.tail_logs.reverse().filter(x=> x !== '');
       data.result.session_summary.forEach(item => {
         switch (item.name) {
           case 'Line':

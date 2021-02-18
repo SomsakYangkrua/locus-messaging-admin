@@ -107,6 +107,7 @@
         </div>
       </div>
     </div> -->
+
     <!-- #END# Widgets -->
     <div class="row">
       <!-- <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -131,6 +132,7 @@
           </div>
         </div>
       </div> -->
+
       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
         <div class="card">
           <div class="header">
@@ -149,23 +151,47 @@
             <table class="table mb-0">
               <tbody>
                 <tr>
-                  <td><i class="fas fa-circle text-primary"></i> Line</td>
+                  <td><i class="fas fa-circle text-success"></i> Line</td>
                   <td class="text-right">{{sessionSummary.line}}</td>
                 </tr>
                 <tr>
-                  <td><i class="fas fa-circle text-warning"></i> Facebook Messaging</td>
+                  <td><i class="fas fa-circle text-primary"></i> Facebook Messaging</td>
                   <td class="text-right">{{sessionSummary.messenger}}</td>
                 </tr>
                 <tr>
-                  <td><i class="fas fa-circle text-danger"></i> Whatsapp</td>
+                  <td><i class="fas fa-circle text-info"></i> Whatsapp</td>
                   <td class="text-right">{{sessionSummary.whatsapp}}</td>
                 </tr>
                 <tr>
-                  <td><i class="fas fa-circle text-danger"></i> IWT</td>
+                  <td><i class="fas fa-circle text-warning"></i> IWT</td>
                   <td class="text-right">{{sessionSummary.iwt}}</td>
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row clearfix">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+          <div class="header">
+            <h2>Tracing Session</h2>
+          </div>
+          <div class="tableBody">
+            <div class="assign-style" style="position: relative; max-height: 355px;" [perfectScrollbar]>
+              <ul class="feedBody" *ngFor="let item of tracing_session">
+                <li class="diactive-feed">
+                  <h6>
+                    <span class="feedLblStyle lblTaskStyle">Log </span> Session
+                  </h6>
+                  <p class="m-b-15 m-t-15">
+                    {{item}}
+                  </p>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
