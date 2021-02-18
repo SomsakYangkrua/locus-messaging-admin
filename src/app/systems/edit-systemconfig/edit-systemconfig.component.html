@@ -60,10 +60,7 @@
                           <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                             <mat-form-field class="example-full-width mb-3" appearance="outline">
                               <mat-label>Key File</mat-label>
-                              <input matInput formControlName="key_file" required>
-                              <mat-error *ngIf="editSystemconfigForm.get('key_file').hasError('required')">
-                                key_file no is required
-                              </mat-error>
+                              <input matInput formControlName="key_file">
                             </mat-form-field>
                           </div>
                         </div>
@@ -71,9 +68,17 @@
                           <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                             <mat-form-field class="example-full-width mb-3" appearance="outline">
                               <mat-label>Cert File</mat-label>
-                              <input matInput formControlName="cert_file" required>
-                              <mat-error *ngIf="editSystemconfigForm.get('cert_file').hasError('required')">
-                                cert_file no is required
+                              <input matInput formControlName="cert_file">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Log FullPath</mat-label>
+                              <input matInput formControlName="log_filename" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('log_filename').hasError('required')">
+                                log_filename no is required
                               </mat-error>
                             </mat-form-field>
                           </div>

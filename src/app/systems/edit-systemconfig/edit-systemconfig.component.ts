@@ -69,6 +69,7 @@ export class EditSystemconfigComponent implements OnInit {
     }
     return this.fb.group({
       mode: 'Dev',
+      log_filename: [this.systemsconfig.log_filename || ''],
       auth_key: [this.systemsconfig.auth_key || ''],
       auth_Realm: [this.systemsconfig.auth_key || ''],
       admin_username: [this.systemsconfig.admin_username || ''],

@@ -1,6 +1,7 @@
 export class Systemconfig {
   id: string;
   mode: string;
+  log_filename: string;
   auth_key: string;
   auth_Realm: string;
   admin_username: string;
@@ -72,6 +73,7 @@ export class Systemconfig {
     {
       this.id = "101";
       this.mode ='';
+      this.log_filename = '';
       this.auth_key ='';
       this.auth_Realm ='';
       this.admin_username ='';
