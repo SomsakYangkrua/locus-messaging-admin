@@ -106,7 +106,9 @@ export class MainComponent implements OnInit{
 
   // sparkline chart end
   // donut chart start
-  public donut_chart: EChartOption = {
+  public donut_chart: EChartOption;
+  public refresh_donut_chart():void {
+    this.donut_chart = {
     tooltip: {
       trigger: 'item',
       formatter: '{a} <br/>{b} : {c} ({d}%)',
@@ -151,7 +153,9 @@ export class MainComponent implements OnInit{
       },
     ],
     color: ['#13E916', '#337DFF', '#235A66', '#FF7733'],
-  };
+  }
+
+};
 
   // donut chart end
   // area chart start
@@ -209,7 +213,9 @@ export class MainComponent implements OnInit{
   };
 
   // area chart end
-  constructor(private dashboardService: DashboardService) {}
+  constructor(private dashboardService: DashboardService) {
+    this.refresh_donut_chart();
+  }
 
   ngOnInit(): void {
     this.subscription = timer(0, 2000).pipe(
@@ -238,9 +244,9 @@ export class MainComponent implements OnInit{
             break;
         }
       });
-
-
+      this.refresh_donut_chart();
     });
+
 
     this.sessionSummary.line = 0;
     this.sessionSummary.messenger = 0;
