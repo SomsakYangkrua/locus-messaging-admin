@@ -34,6 +34,7 @@ export class Systemconfig {
   webhook_keyword_mapping_topureconnect: string;
   webhook_agent_respone_timeout: string;
   webhook_agent_respone_default_text: string;
+  webhook_line_to_bot: string;
   dialogflow_projectID: string;
   dialogflow_sessionID: string;
   dialogflow_AudioEncoding: string;
@@ -68,6 +69,10 @@ export class Systemconfig {
   amqp_rpc_timeout: string;
   background_queue_size: string;
   background_worker_size: string;
+  eva_bot_API_KEY: string;
+  eva_bot_PROJECT: string;
+  eva_bot_CHANNEL: string;
+  eva_bot_url: string;
 
   constructor() {
     {
@@ -106,6 +111,7 @@ export class Systemconfig {
       this.webhook_keyword_mapping_topureconnect ='';
       this.webhook_agent_respone_timeout ='';
       this.webhook_agent_respone_default_text ='';
+      this.webhook_line_to_bot = '';
       this.dialogflow_projectID ='';
       this.dialogflow_sessionID ='';
       this.dialogflow_AudioEncoding ='';
@@ -140,6 +146,10 @@ export class Systemconfig {
       this.amqp_rpc_timeout ='';
       this.background_queue_size ='';
       this.background_worker_size ='';
+      this.eva_bot_API_KEY = '';
+      this.eva_bot_PROJECT = '';
+      this.eva_bot_CHANNEL = '';
+      this.eva_bot_url = '';
     }
   }
 }

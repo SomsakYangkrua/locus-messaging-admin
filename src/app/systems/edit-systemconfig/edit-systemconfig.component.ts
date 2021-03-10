@@ -106,7 +106,7 @@ export class EditSystemconfigComponent implements OnInit {
       webhook_keyword_mapping_topureconnect: [this.systemsconfig.webhook_keyword_mapping_topureconnect || ''],
       webhook_agent_respone_timeout: [this.systemsconfig.webhook_agent_respone_timeout || '27'],
       webhook_agent_respone_default_text: [this.systemsconfig.webhook_agent_respone_default_text || 'Right now agent is busy if you would like to continue please say again?/กรุณาสอบถามอีกครั้งคะ'],
-
+      webhook_line_to_bot:[this.systemsconfig.webhook_line_to_bot || ''],
       dialogflow_projectID: [this.systemsconfig.dialogflow_projectID || ''],
       dialogflow_sessionID: [this.systemsconfig.dialogflow_sessionID || ''],
       dialogflow_AudioEncoding: [this.systemsconfig.dialogflow_AudioEncoding || '1'],
@@ -145,6 +145,12 @@ export class EditSystemconfigComponent implements OnInit {
       amqp_rpc_timeout: [this.systemsconfig.amqp_rpc_timeout || ''],
       background_queue_size: [this.systemsconfig.background_queue_size || ''],
       background_worker_size: [this.systemsconfig.background_worker_size || ''],
+
+      eva_bot_API_KEY:[this.systemsconfig.eva_bot_API_KEY || 'a5980810-efd1-4111-ab54-4e70ef4901da'],
+      eva_bot_PROJECT:[this.systemsconfig.eva_bot_PROJECT || 'Locus CLEV'],
+      eva_bot_CHANNEL:[this.systemsconfig.eva_bot_CHANNEL || 'web'],
+      eva_bot_url:[this.systemsconfig.eva_bot_url || 'https://api-naos.eva.bot/conversations'],
+
 
     });
   }

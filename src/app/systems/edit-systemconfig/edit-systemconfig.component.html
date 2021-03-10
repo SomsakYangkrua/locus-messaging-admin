@@ -480,6 +480,19 @@
                             </mat-form-field>
                           </div>
                         </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>Bot Backend[DialogFlow,eva]</mat-label>
+                              <input matInput formControlName="webhook_line_to_bot" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('webhook_line_to_bot').hasError('required')">
+                                bot backend no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+
+
                       </mat-tab>
 
                       <mat-tab label="Messenger Interface">
@@ -816,6 +829,52 @@
                               <input matInput formControlName="iwt_ftp_path" required>
                               <mat-error *ngIf="editSystemconfigForm.get('iwt_ftp_path').hasError('required')">
                                 path no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                      </mat-tab>
+                      <mat-tab label="Evaris-Bot">
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>API-KEY</mat-label>
+                              <input matInput formControlName="eva_bot_API_KEY" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('eva_bot_API_KEY').hasError('required')">
+                                API-KEY no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>PROJECT</mat-label>
+                              <input matInput formControlName="eva_bot_PROJECT" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('eva_bot_PROJECT').hasError('required')">
+                                PROJECT no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>CHANNEL</mat-label>
+                              <input matInput formControlName="eva_bot_CHANNEL" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('eva_bot_CHANNEL').hasError('required')">
+                                CHANNEL no is required
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width mb-3" appearance="outline">
+                              <mat-label>URL</mat-label>
+                              <input matInput formControlName="eva_bot_url" required>
+                              <mat-error *ngIf="editSystemconfigForm.get('eva_bot_url').hasError('required')">
+                                url no is required
                               </mat-error>
                             </mat-form-field>
                           </div>
